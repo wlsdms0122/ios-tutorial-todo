@@ -10,7 +10,7 @@ import UIKit
 
 class TodoListViewController: UIViewController {
     // MARK: - Constant
-    private let TODO_LIST_CELL_IDENTIFIER = "UITableViewCell"
+    private let TODO_LIST_CELL_IDENTIFIER = "ToDoListTableViewCell"
     
     // MARK: - Layout
     @IBOutlet private weak var toDoItemTextField: UITextField!
@@ -57,10 +57,18 @@ extension TodoListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // F-1. TableView 에서 관리하는 재사용 셀(Reusable Cell)을 얻음.
-        let cell = tableView.dequeueReusableCell(withIdentifier: TODO_LIST_CELL_IDENTIFIER, for: indexPath)
-        // F-2. Cell 의 Label 에 To Do 항목을 설정하여 반환
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TODO_LIST_CELL_IDENTIFIER, for: indexPath) as? ToDoListTableViewCell else { fatalError() }
+        // F-2. 현재 index 의 To Do Item 을 가져옴
         let todo = todos[indexPath.item]
-        cell.textLabel?.text = todo.content
+        // F-3. To Do 내용을 Cell 의 Label 에 설정
+        cell.contentLabel.text = todo.content
+        // F-4. To Do 생성 날짜를 `DateFormatter` 를 통해 문자열로 변환하여 Cell 의 Label 에 설정
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy. MM. dd hh:mm"
+        cell.createAtLabel.text = dateFormatter.string(from: todo.createAt)
+        // F-5. To Do 완료 여부를 Cell 의 Button 에 설정
+        cell.doneButton.isSelected = todo.isDone
+        
         return cell
     }
 }
