@@ -17,7 +17,7 @@ class TodoListViewController: UIViewController {
     @IBOutlet private weak var toDoListTableView: UITableView!
     
     // MARK: - Property
-    private var todos: [String] = []
+    private var todos: [ToDo] = []
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -30,6 +30,7 @@ class TodoListViewController: UIViewController {
     // MARK: - Private
     private func addTodo(_ todo: String) {
         // B-1. 새로운 `To Do` 항목을 추가
+        let todo = ToDo(content: todo, createAt: Date(), isDone: false)
         todos.append(todo)
         // B-2. TableView 를 업데이트 (갱신)
         toDoListTableView.reloadData()
@@ -58,7 +59,8 @@ extension TodoListViewController: UITableViewDataSource {
         // F-1. TableView 에서 관리하는 재사용 셀(Reusable Cell)을 얻음.
         let cell = tableView.dequeueReusableCell(withIdentifier: TODO_LIST_CELL_IDENTIFIER, for: indexPath)
         // F-2. Cell 의 Label 에 To Do 항목을 설정하여 반환
-        cell.textLabel?.text = todos[indexPath.item]
+        let todo = todos[indexPath.item]
+        cell.textLabel?.text = todo.content
         return cell
     }
 }

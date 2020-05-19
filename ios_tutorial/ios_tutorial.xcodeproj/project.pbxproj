@@ -12,6 +12,7 @@
 		F33DB26924740F6800549E39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F33DB26724740F6800549E39 /* Main.storyboard */; };
 		F33DB26B24740F6B00549E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F33DB26A24740F6B00549E39 /* Assets.xcassets */; };
 		F33DB26E24740F6B00549E39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F33DB26C24740F6B00549E39 /* LaunchScreen.storyboard */; };
+		F3DBB812247418EE00AC1CAD /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DBB811247418EE00AC1CAD /* ToDo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		F33DB26D24740F6B00549E39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F33DB26F24740F6B00549E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3DBB81724756C5100AC1CAD /* Practice.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Practice.playground; path = ../Practice.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		F3DBB811247418EE00AC1CAD /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 		F3DBB8102474189500AC1CAD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F3DBB811247418EE00AC1CAD /* ToDo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3DBB812247418EE00AC1CAD /* ToDo.swift in Sources */,
 				F33DB26624740F6800549E39 /* TodoListViewController.swift in Sources */,
 				F33DB26224740F6800549E39 /* AppDelegate.swift in Sources */,
 			);
