@@ -89,6 +89,9 @@
                                                             <state key="selected" title="완료">
                                                                 <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="doneButtonTapped:" destination="kVz-q7-mqD" eventType="touchUpInside" id="Uwf-t2-jpL"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>

@@ -69,6 +69,19 @@ extension TodoListViewController: UITableViewDataSource {
         // F-5. To Do 완료 여부를 Cell 의 Button 에 설정
         cell.doneButton.isSelected = todo.isDone
         
+        // F-6. To Do Cell 의 이벤트를 처리하기 위한 속성 및 Delegate 를 할당
+        cell.index = indexPath.item
+        cell.delegate = self
+        
         return cell
+    }
+}
+
+extension TodoListViewController: ToDoListTableViewCellDelegate {
+    func done(_ index: Int) {
+        // G-1. 이벤트가 발생한 To Do Item 의 상태를 변경
+        todos[index].isDone.toggle()
+        // G-2. TableView 를 업데이트 (갱신)
+        toDoListTableView.reloadData()
     }
 }
