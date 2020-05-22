@@ -18,7 +18,8 @@ class ToDoListTableViewCell: UITableViewCell {
     // MARK: - Layout
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var createAtLabel: UILabel!
-    @IBOutlet weak var doneButton: UIButton!
+    // E-1. Custom View Type 으로 변경
+    @IBOutlet weak var doneButton: DoneButton!
     
     // MARK: - Property
     // C-1. 이벤트 전달을 위한 속성 추가
@@ -35,7 +36,8 @@ class ToDoListTableViewCell: UITableViewCell {
         index = 0
         contentLabel.text = ""
         createAtLabel.text = ""
-        doneButton.isSelected = false
+        // E-2. DoneButton 값 설정
+        doneButton.isDone = false
     }
     
     // MARK: - Action

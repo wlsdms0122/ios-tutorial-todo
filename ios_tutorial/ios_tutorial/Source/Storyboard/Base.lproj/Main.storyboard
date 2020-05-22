@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -78,21 +78,16 @@
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXt-TJ-Jr7" userLabel="Done Button">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YBd-4i-lwA" customClass="DoneButton" customModule="ios_tutorial" customModuleProvider="target">
                                                             <rect key="frame" x="310" y="0.0" width="80" height="76"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="80" id="wwd-K2-9vI"/>
+                                                                <constraint firstAttribute="width" constant="80" id="kmq-ZN-dWH"/>
                                                             </constraints>
-                                                            <state key="normal" title="미완료">
-                                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            </state>
-                                                            <state key="selected" title="완료">
-                                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            </state>
                                                             <connections>
-                                                                <action selector="doneButtonTapped:" destination="kVz-q7-mqD" eventType="touchUpInside" id="Uwf-t2-jpL"/>
+                                                                <action selector="doneButtonTapped:" destination="kVz-q7-mqD" eventType="touchUpInside" id="jMW-IH-0kb"/>
                                                             </connections>
-                                                        </button>
+                                                        </view>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -106,7 +101,7 @@
                                         <connections>
                                             <outlet property="contentLabel" destination="fav-Ru-Oyi" id="R1o-kt-HNu"/>
                                             <outlet property="createAtLabel" destination="bte-YE-bGL" id="paQ-vZ-TaC"/>
-                                            <outlet property="doneButton" destination="cXt-TJ-Jr7" id="gtn-m2-gU9"/>
+                                            <outlet property="doneButton" destination="YBd-4i-lwA" id="rMr-h7-RaT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

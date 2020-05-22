@@ -67,7 +67,7 @@ extension TodoListViewController: UITableViewDataSource {
         dateFormatter.dateFormat = "yyyy. MM. dd hh:mm"
         cell.createAtLabel.text = dateFormatter.string(from: todo.createAt)
         // F-5. To Do 완료 여부를 Cell 의 Button 에 설정
-        cell.doneButton.isSelected = todo.isDone
+        cell.doneButton.isDone = todo.isDone
         
         // F-6. To Do Cell 의 이벤트를 처리하기 위한 속성 및 Delegate 를 할당
         cell.index = indexPath.item
