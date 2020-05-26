@@ -11,9 +11,11 @@ import UIKit
 class TodoListViewController: UIViewController {
     // MARK: - Constant
     private let TODO_LIST_CELL_IDENTIFIER = "ToDoListTableViewCell"
+    private let MAIN_STORYBOARD_IDENTIFIER = "Main"
+    private let TODO_ADD_VIEW_IDENTIFIER = "TodoAddViewController"
     
     // MARK: - Layout
-    @IBOutlet private weak var toDoItemTextField: UITextField!
+    @IBOutlet private weak var addButton: UIButton!
     @IBOutlet private weak var toDoListTableView: UITableView!
     
     // MARK: - Property
@@ -25,6 +27,11 @@ class TodoListViewController: UIViewController {
         
         // A-1. TableView 의 Data Source(Adapter) 를 설정
         toDoListTableView.dataSource = self
+        
+        // A-2. Add Button Layer 수정
+        addButton.layer.borderColor = addButton.tintColor.cgColor
+        addButton.layer.borderWidth = 1
+        addButton.layer.cornerRadius = 8
     }
     
     // MARK: - Private
@@ -38,12 +45,12 @@ class TodoListViewController: UIViewController {
 
     // MARK: - Action
     @IBAction func addButtonTapped(_ sender: Any) {
-        // C-1. TextField 로부터 입력 값을 읽음
-        guard let todo = toDoItemTextField.text else { return }
-        // C-2. 입력 필드 초기화
-        toDoItemTextField.text = ""
-        // C-3. 입력된 항목을 데이터에 추가
-        addTodo(todo)
+        // C-1. Storyboard 에서 ViewController 생성
+        let storyboard = UIStoryboard(name: MAIN_STORYBOARD_IDENTIFIER, bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: TODO_ADD_VIEW_IDENTIFIER)
+        
+        // C-2. `present` 방식을 통해 ViewController 화면 전환
+        present(viewController, animated: true, completion: nil)
     }
 }
 
