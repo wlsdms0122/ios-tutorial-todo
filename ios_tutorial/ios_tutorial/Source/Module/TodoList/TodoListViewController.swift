@@ -30,7 +30,7 @@ class TodoListViewController: UIViewController {
     // MARK: - Private
     private func addTodo(_ todo: String) {
         // B-1. 새로운 `To Do` 항목을 추가
-        let todo = ToDo(content: todo, createAt: Date(), isDone: false)
+        let todo = ToDo(content: todo)
         todos.append(todo)
         // B-2. TableView 를 업데이트 (갱신)
         toDoListTableView.reloadData()

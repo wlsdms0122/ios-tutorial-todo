@@ -10,6 +10,27 @@ import Foundation
 
 struct ToDo {
     let content: String
+    let description: String
+    let priority: Priority
+    
     let createAt: Date
     var isDone: Bool
+    
+    init(content: String, description: String, priority: Priority) {
+        self.content = content
+        self.description = description
+        self.priority = priority
+        createAt = Date()
+        isDone = false
+    }
+    
+    init(content: String) {
+        self.init(content: content, description: "", priority: .medium)
+    }
+}
+
+enum Priority {
+    case high
+    case medium
+    case low
 }
