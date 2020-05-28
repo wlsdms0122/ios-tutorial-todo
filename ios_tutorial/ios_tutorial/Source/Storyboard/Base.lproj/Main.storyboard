@@ -284,6 +284,21 @@
             </objects>
             <point key="canvasLocation" x="971.01449275362324" y="138.61607142857142"/>
         </scene>
+        <!--Todo Detail View Controller-->
+        <scene sceneID="nj9-or-m2a">
+            <objects>
+                <viewController storyboardIdentifier="TodoDetailViewController" id="GXC-yj-zia" customClass="TodoDetailViewController" customModule="ios_tutorial" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IL9-ME-Nmy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="vYW-mO-M9K"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AMC-Mu-kLi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1829" y="139"/>
+        </scene>
     </scenes>
     <resources>
         <image name="todo_check_logo" width="309" height="205"/>
