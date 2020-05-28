@@ -47,9 +47,12 @@ class TodoListViewController: UIViewController {
     @IBAction func addButtonTapped(_ sender: Any) {
         // C-1. Storyboard 에서 ViewController 생성
         let storyboard = UIStoryboard(name: MAIN_STORYBOARD_IDENTIFIER, bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: TODO_ADD_VIEW_IDENTIFIER)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: TODO_ADD_VIEW_IDENTIFIER) as? TodoAddViewController else { return }
         
-        // C-2. `present` 방식을 통해 ViewController 화면 전환
+        // C-2. Add ViewController 로부터 데이터를 받기위해 delegate 설정
+        viewController.delegate = self
+        
+        // C-3. `present` 방식을 통해 ViewController 화면 전환
         present(viewController, animated: true, completion: nil)
     }
 }
@@ -89,6 +92,15 @@ extension TodoListViewController: ToDoListTableViewCellDelegate {
         // G-1. 이벤트가 발생한 To Do Item 의 상태를 변경
         todos[index].isDone.toggle()
         // G-2. TableView 를 업데이트 (갱신)
+        toDoListTableView.reloadData()
+    }
+}
+
+extension TodoListViewController: TodoAddViewControllerDelegate {
+    func add(todo: ToDo) {
+        // H-1. 전달받은 ToDo Item 을 배열에 추가
+        todos.insert(todo, at: 0)
+        // H-2. TableView 를 업데이트 (갱신)
         toDoListTableView.reloadData()
     }
 }

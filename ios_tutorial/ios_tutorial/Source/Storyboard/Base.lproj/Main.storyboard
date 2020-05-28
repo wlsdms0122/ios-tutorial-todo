@@ -121,7 +121,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DJn-we-pt6" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="984"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="todo_check_logo" translatesAutoresizingMaskIntoConstraints="NO" id="vVO-IQ-5KZ">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="todo_check_logo" translatesAutoresizingMaskIntoConstraints="NO" id="vVO-IQ-5KZ" userLabel="Top Image View">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="250" id="RfJ-An-Ecc"/>
@@ -255,6 +255,9 @@
                                 <state key="normal" title="추가">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="addButtonTapped:" destination="7gD-CV-yol" eventType="touchUpInside" id="QTR-X9-hOY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -272,7 +275,9 @@
                     <connections>
                         <outlet property="addButton" destination="h9d-Vb-O6c" id="XfZ-T4-qVN"/>
                         <outlet property="descriptionTextView" destination="Umh-KC-Hvd" id="b5k-He-9Pl"/>
+                        <outlet property="prioritySegmentControl" destination="SyM-l8-Dn9" id="JaL-S1-leR"/>
                         <outlet property="scrollView" destination="Oe4-gA-rDl" id="vb2-hu-BsF"/>
+                        <outlet property="titleTextField" destination="Vr5-1P-wTZ" id="XdZ-X6-5z4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwm-o2-pbc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

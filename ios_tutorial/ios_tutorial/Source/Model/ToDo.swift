@@ -29,8 +29,8 @@ struct ToDo {
     }
 }
 
-enum Priority {
-    case high
+enum Priority: Int {
+    case high = 0
     case medium
     case low
 }
