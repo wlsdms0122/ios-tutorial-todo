@@ -13,6 +13,7 @@ class TodoListViewController: UIViewController {
     private let TODO_LIST_CELL_IDENTIFIER = "ToDoListTableViewCell"
     private let MAIN_STORYBOARD_IDENTIFIER = "Main"
     private let TODO_ADD_VIEW_IDENTIFIER = "TodoAddViewController"
+    private let TODO_DETAIL_VIEW_IDENTIFIER = "TodoDetailViewController"
     
     // MARK: - Layout
     @IBOutlet private weak var addButton: UIButton!
@@ -27,6 +28,7 @@ class TodoListViewController: UIViewController {
         
         // A-1. TableView 의 Data Source(Adapter) 를 설정
         toDoListTableView.dataSource = self
+        toDoListTableView.delegate = self
         
         // A-2. Add Button Layer 수정
         addButton.layer.borderColor = addButton.tintColor.cgColor
@@ -58,7 +60,7 @@ class TodoListViewController: UIViewController {
 }
 
 // D-1. `TodoListViewController` 의 확장(extension)으로 `UITableViewDataSource` protocol(Interfcae) 를 채택
-extension TodoListViewController: UITableViewDataSource {
+extension TodoListViewController: UITableViewDelegate, UITableViewDataSource {
     // D-2. 필수로 구현하여햐 하는 method 작성
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // E-1. Section 을 구성하는 Item 의 갯수를 반환
@@ -84,6 +86,14 @@ extension TodoListViewController: UITableViewDataSource {
         cell.delegate = self
         
         return cell
+    }
+    
+    // H-1. Cell 선택시 Navigation push
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: MAIN_STORYBOARD_IDENTIFIER, bundle: nil)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: TODO_DETAIL_VIEW_IDENTIFIER) as? TodoDetailViewController else { return }
+        
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
