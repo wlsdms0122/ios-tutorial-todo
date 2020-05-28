@@ -10,6 +10,9 @@ import UIKit
 
 class TodoDetailViewController: UIViewController {
     // MARK: - Layout
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var priorityLabel: UILabel!
     
     // MARK: - Property
     
