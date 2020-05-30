@@ -93,6 +93,10 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource {
         let storyboard = UIStoryboard(name: MAIN_STORYBOARD_IDENTIFIER, bundle: nil)
         guard let viewController = storyboard.instantiateViewController(withIdentifier: TODO_DETAIL_VIEW_IDENTIFIER) as? TodoDetailViewController else { return }
         
+        // H-2. To Do Item 전달
+        viewController.todo = todos[indexPath.item]
+        
+        // H-3. Navigation Push
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
