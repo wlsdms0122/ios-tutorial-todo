@@ -11,9 +11,12 @@ import UIKit
 class TodoListViewController: UIViewController {
     // MARK: - Constant
     private let TODO_LIST_CELL_IDENTIFIER = "ToDoListTableViewCell"
+    private let MAIN_STORYBOARD_IDENTIFIER = "Main"
+    private let TODO_ADD_VIEW_IDENTIFIER = "TodoAddViewController"
+    private let TODO_DETAIL_VIEW_IDENTIFIER = "TodoDetailViewController"
     
     // MARK: - Layout
-    @IBOutlet private weak var toDoItemTextField: UITextField!
+    @IBOutlet private weak var addButton: UIButton!
     @IBOutlet private weak var toDoListTableView: UITableView!
     
     // MARK: - Property
@@ -25,12 +28,18 @@ class TodoListViewController: UIViewController {
         
         // A-1. TableView 의 Data Source(Adapter) 를 설정
         toDoListTableView.dataSource = self
+        toDoListTableView.delegate = self
+        
+        // A-2. Add Button Layer 수정
+        addButton.layer.borderColor = addButton.tintColor.cgColor
+        addButton.layer.borderWidth = 1
+        addButton.layer.cornerRadius = 8
     }
     
     // MARK: - Private
     private func addTodo(_ todo: String) {
         // B-1. 새로운 `To Do` 항목을 추가
-        let todo = ToDo(content: todo, createAt: Date(), isDone: false)
+        let todo = ToDo(content: todo)
         todos.append(todo)
         // B-2. TableView 를 업데이트 (갱신)
         toDoListTableView.reloadData()
@@ -38,17 +47,20 @@ class TodoListViewController: UIViewController {
 
     // MARK: - Action
     @IBAction func addButtonTapped(_ sender: Any) {
-        // C-1. TextField 로부터 입력 값을 읽음
-        guard let todo = toDoItemTextField.text else { return }
-        // C-2. 입력 필드 초기화
-        toDoItemTextField.text = ""
-        // C-3. 입력된 항목을 데이터에 추가
-        addTodo(todo)
+        // C-1. Storyboard 에서 ViewController 생성
+        let storyboard = UIStoryboard(name: MAIN_STORYBOARD_IDENTIFIER, bundle: nil)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: TODO_ADD_VIEW_IDENTIFIER) as? TodoAddViewController else { return }
+        
+        // C-2. Add ViewController 로부터 데이터를 받기위해 delegate 설정
+        viewController.delegate = self
+        
+        // C-3. `present` 방식을 통해 ViewController 화면 전환
+        present(viewController, animated: true, completion: nil)
     }
 }
 
 // D-1. `TodoListViewController` 의 확장(extension)으로 `UITableViewDataSource` protocol(Interfcae) 를 채택
-extension TodoListViewController: UITableViewDataSource {
+extension TodoListViewController: UITableViewDelegate, UITableViewDataSource {
     // D-2. 필수로 구현하여햐 하는 method 작성
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // E-1. Section 을 구성하는 Item 의 갯수를 반환
@@ -75,6 +87,18 @@ extension TodoListViewController: UITableViewDataSource {
         
         return cell
     }
+    
+    // H-1. Cell 선택시 Navigation push
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: MAIN_STORYBOARD_IDENTIFIER, bundle: nil)
+        guard let viewController = storyboard.instantiateViewController(withIdentifier: TODO_DETAIL_VIEW_IDENTIFIER) as? TodoDetailViewController else { return }
+        
+        // H-2. To Do Item 전달
+        viewController.todo = todos[indexPath.item]
+        
+        // H-3. Navigation Push
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 extension TodoListViewController: ToDoListTableViewCellDelegate {
@@ -82,6 +106,15 @@ extension TodoListViewController: ToDoListTableViewCellDelegate {
         // G-1. 이벤트가 발생한 To Do Item 의 상태를 변경
         todos[index].isDone.toggle()
         // G-2. TableView 를 업데이트 (갱신)
+        toDoListTableView.reloadData()
+    }
+}
+
+extension TodoListViewController: TodoAddViewControllerDelegate {
+    func add(todo: ToDo) {
+        // H-1. 전달받은 ToDo Item 을 배열에 추가
+        todos.insert(todo, at: 0)
+        // H-2. TableView 를 업데이트 (갱신)
         toDoListTableView.reloadData()
     }
 }

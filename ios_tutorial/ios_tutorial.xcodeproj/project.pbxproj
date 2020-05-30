@@ -14,6 +14,8 @@
 		F33DB26E24740F6B00549E39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F33DB26C24740F6B00549E39 /* LaunchScreen.storyboard */; };
 		F3933FDF2478101A00978E5F /* DoneButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3933FDE2478101A00978E5F /* DoneButton.xib */; };
 		F3933FE12478102700978E5F /* DoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3933FE02478102700978E5F /* DoneButton.swift */; };
+		F3933FED247D56E800978E5F /* TodoAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3933FEC247D56E800978E5F /* TodoAddViewController.swift */; };
+		F3933FF2247FEED000978E5F /* TodoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3933FF1247FEED000978E5F /* TodoDetailViewController.swift */; };
 		F3DBB812247418EE00AC1CAD /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DBB811247418EE00AC1CAD /* ToDo.swift */; };
 		F3DBB81524741DA500AC1CAD /* ToDoListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DBB81424741DA500AC1CAD /* ToDoListTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +30,8 @@
 		F33DB26F24740F6B00549E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3933FDE2478101A00978E5F /* DoneButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoneButton.xib; sourceTree = "<group>"; };
 		F3933FE02478102700978E5F /* DoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneButton.swift; sourceTree = "<group>"; };
+		F3933FEC247D56E800978E5F /* TodoAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoAddViewController.swift; sourceTree = "<group>"; };
+		F3933FF1247FEED000978E5F /* TodoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailViewController.swift; sourceTree = "<group>"; };
 		F3DBB811247418EE00AC1CAD /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		F3DBB81424741DA500AC1CAD /* ToDoListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTableViewCell.swift; sourceTree = "<group>"; };
 		F3DBB81724756C5100AC1CAD /* Practice.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Practice.playground; path = ../Practice.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -111,6 +115,8 @@
 			children = (
 				F33DB27A247412A400549E39 /* App */,
 				F33DB27B247412AC00549E39 /* TodoList */,
+				F3933FEB247D56CA00978E5F /* TodoAdd */,
+				F3933FF0247FEEBE00978E5F /* TodoDetail */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -141,6 +147,23 @@
 			);
 			path = View;
 			sourceTree = "<group>";
+		};
+		F3933FEB247D56CA00978E5F /* TodoAdd */ = {
+			isa = PBXGroup;
+			children = (
+				F3933FEC247D56E800978E5F /* TodoAddViewController.swift */,
+			);
+			path = TodoAdd;
+			sourceTree = "<group>";
+		};
+		F3933FF0247FEEBE00978E5F /* TodoDetail */ = {
+			isa = PBXGroup;
+			children = (
+				F3933FF1247FEED000978E5F /* TodoDetailViewController.swift */,
+			);
+			name = TodoDetail;
+			path = ios_tutorial/Source/Module/TodoDetail;
+			sourceTree = SOURCE_ROOT;
 		};
 		F3DBB8102474189500AC1CAD /* Model */ = {
 			isa = PBXGroup;
@@ -232,9 +255,11 @@
 			files = (
 				F3933FE12478102700978E5F /* DoneButton.swift in Sources */,
 				F3DBB812247418EE00AC1CAD /* ToDo.swift in Sources */,
+				F3933FED247D56E800978E5F /* TodoAddViewController.swift in Sources */,
 				F33DB26624740F6800549E39 /* TodoListViewController.swift in Sources */,
 				F33DB26224740F6800549E39 /* AppDelegate.swift in Sources */,
 				F3DBB81524741DA500AC1CAD /* ToDoListTableViewCell.swift in Sources */,
+				F3933FF2247FEED000978E5F /* TodoDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
